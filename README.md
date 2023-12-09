@@ -2,7 +2,7 @@
 
 PREREQUISITES:
 
-Node Js - 18.0.0 MongoDB - 8.0.3
+Node Js - 18.0.0 MongoDB 6.0
 
 Node Packages Needed:
 
@@ -12,6 +12,7 @@ nodemon (development dependency)
 mongoose
 jsonwebtoken
 express-validator
+uuid
 
 Environment setup:
 
