@@ -31,7 +31,18 @@ exports.signUp = async (res, userName, password, email) => {
       token: token,
     });
   } catch (error) {
-    console.log(`Error at signUp process...............`, error);
+    // console.log(`Error at signUp process...............`, error.message);
+    if (error instanceof Error && error.code === 11000) {
+      console.error("Duplicate key error:", error.message);
+      const regex = /\{([^}]+)\}/g;
+      const matches = error.message.match(regex);
+      return res.status(409).json({
+        Error: "Duplicate key error:" + " " + matches,
+      });
+    } else {
+      console.error("MongoDB Error:", error.message);
+      return "An error occurred while performing the operation.";
+    }
   }
 };
 
